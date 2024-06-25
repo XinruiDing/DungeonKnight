@@ -28,7 +28,7 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
     - [x] void heart(octagonal gem)
     - [x] merchants and sages
 - [ ] use bfxr to design voice sourse.
-- [ ] find free background music
+- [x] find free background music
 - [ ] write `dependences.lua`
 - [ ] build the main map.
 - [ ] build dungeon.
@@ -40,6 +40,7 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
 - [ ] design charms.
 
 ### ✨ Used resources
+#### ✨ graphics
 - dungeontileset-ii
     - author: 0x72
     - origin: [itch.io](https://0x72.itch.io/dungeontileset-ii)
@@ -62,3 +63,29 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
     - author: Kyrise
     - origin: [itch.io](https://kyrise.itch.io/kyrises-free-16x16-rpg-icon-pack)
     - lisence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+#### ✨ sounds
+- 16-Bit Starter Pack
+    - author: Bit By Bit Sound / Bert Cole
+    - origin: [itch.io](https://bit-by-bit-sound.itch.io/16-bit-starter-pack)
+        - [author's page](bitbybitsound.com)
+    - lisence:
+
+        All tracks are offered on a non-exclusive license. All music is original and composed by Bert Cole.
+
+        Upon recieving this license, you can use the music anywhere you like and across multiple projects as long as you adhere to the restrictions outlined below.
+
+        Please credit me clearly as the composer wherever the music is used. Credit should read as music composed by Bert Cole?and include a link to my homepage. 
+
+        bitbybitsound.com
+
+        Linking to my Twitter or Patreon account is optional (but very much appreciated!) :D  
+
+        Patreon: patreon.com/bitbybitsound
+        Twitter: @BitByBitSound
+
+        Restrictions:
+
+        Each license and purchase is applicable to one company or one person only. It is forbidden to re-sell any of these works (e.g. as part of a soundtrack or in any other form). 
+        It is forbidden to create or sell any derivative works.
+
