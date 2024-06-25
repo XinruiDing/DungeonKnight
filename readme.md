@@ -29,3 +29,4 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
 - [ ] design normal monster.
 - [ ] design three elite monster.
 - [ ] design hollow knight.
+- [ ] design charms.
