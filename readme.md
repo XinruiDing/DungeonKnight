@@ -18,7 +18,15 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
 ### ✨ Tasks and Issues
 - [x] write a simple introduction to my game.
 - [x] roughly design the game structure.
-- [ ] find free or cheap visual sourse.
+- [x] find free or cheap visual sourse.
+    - [x] character
+    - [x] dungeon
+    - [x] elite monsters(the big three) and normal monsters
+    - [x] masks(replace with skulls)
+    - [x] charms(books)
+    - [x] gems
+    - [x] void heart(octagonal gem)
+    - [x] merchants and sages
 - [ ] use bfxr to design voice sourse.
 - [ ] find free background music
 - [ ] write `dependences.lua`
@@ -30,3 +38,27 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
 - [ ] design three elite monster.
 - [ ] design hollow knight.
 - [ ] design charms.
+
+### ✨ Used resources
+- dungeontileset-ii
+    - author: 0x72
+    - origin: [itch.io](https://0x72.itch.io/dungeontileset-ii)
+    - lisence: [CC-0](https://www.tldrlegal.com/license/creative-commons-cc0-1-0-universal)
+
+- Gems / Coins Free
+    - author: La Red Games
+    - origin: [itch.io](https://laredgames.itch.io/gems-coins-free)
+    - lisence: 
+        - You can use this asset for personal and commercial purpose.
+        - Credit is not required but would be appreciated. 
+        - Modify as you will.
+
+- 16x16 Fantasy RPG Characters
+    - author: SuperDark
+    - origin: [itch.io](https://superdark.itch.io/16x16-free-npc-pack)
+    - lisence: These assets are completely free so you can use them however you like, in free and commercial projects and you can even modify them to suit your needs, you don't need to credit me but it is greatly appreciated if you do, and don't forget: have fun
+
+- Kyrise's Free 16x16 RPG Icon Pack
+    - author: Kyrise
+    - origin: [itch.io](https://kyrise.itch.io/kyrises-free-16x16-rpg-icon-pack)
+    - lisence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
