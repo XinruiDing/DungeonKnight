@@ -36,11 +36,9 @@ function PlayerWalkState:update(dt)
     -- perform base collision detection against walls
     EntityWalkState.update(self, dt)
 
-    if love.keyboard.wasPressed('space') and gStateStack:getCurrentState().__index == DungeonState then
+    if love.keyboard.wasPressed('space') and gStateStack:getCurrentState().__index == DungeonState and not self.entity.sword.isActive then
         self.entity.sword:throw()
     end
-
-    
 
     -- if we bumped something when checking collision, check any object collisions
     if self.bumped then

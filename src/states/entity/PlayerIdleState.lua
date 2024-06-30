@@ -11,7 +11,7 @@ function PlayerIdleState:update(dt)
         self.entity:changeState('walk')
     end
 
-    if love.keyboard.wasPressed('space') and gStateStack:getCurrentState().__index == DungeonState then
+    if love.keyboard.wasPressed('space') and gStateStack:getCurrentState().__index == DungeonState and not self.entity.sword.isActive then
         self.entity.sword:throw()
     end
 
