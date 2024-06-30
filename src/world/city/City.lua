@@ -33,6 +33,8 @@ function City:init()
     }
     self.player.stateMachine:change('idle')
 
+    self.player.weaponName = 'normal-sword'
+
 end
 
 function City:generateWallsAndFloors()
@@ -137,6 +139,10 @@ end
 
 
 function City:update(dt)
+    if love.keyboard.wasPressed('q') then
+        gStateStack:push(PlayerStatsState(self.player))
+    end
+
     self.player:update(dt)
 
     for k, entity in pairs(self.entities) do
@@ -191,6 +197,7 @@ function City:update(dt)
                                         if self.player.wealth >= cost then
                                             gStateStack:push(DialogueState('You bought a weapon!', function()
                                                 self.player:swordUpgrade(selectedWeapon)
+                                                self.player.weaponName = selectedWeapon
                                                 self.player.wealth = self.player.wealth - cost
                                             end))
                                         else
@@ -261,5 +268,5 @@ function City:render()
         TILE_SIZE * i, 0)
     end
 
-
+    love.graphics.printf("To See character panel, Press Q", 0, 10, VIRTUAL_WIDTH, 'right')
 end

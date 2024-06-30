@@ -21,6 +21,7 @@ require 'src/states/game/CityState'
 require 'src/states/game/DungeonState'
 require 'src/states/game/DialogueState'
 require 'src/states/game/SelectState'
+require 'src/states/game/PlayerStatsState'
 
 require 'src/states/entity/EntityBaseState'
 require 'src/states/entity/EntityIdleState'

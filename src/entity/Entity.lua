@@ -46,6 +46,8 @@ function Entity:init(def)
         self.sword = Sword(GAME_OBJECT_DEFS[def.sword], self.x + TILE_SIZE, self.y + TILE_SIZE, self)
     end
 
+    self.weaponName = nil
+
 end
 
 function Entity:changeAnimation(name)
