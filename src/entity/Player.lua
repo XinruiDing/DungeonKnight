@@ -23,6 +23,7 @@ function Player:onDeath()
     gStateStack:push(DialogueState('You Lost! Press Enter to return to city!', 
         function()
             gStateStack:pop()
+            self.health = self.maxHealth
             gStateStack:push(CityState(self))
         end
     ))

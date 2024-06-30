@@ -23,7 +23,7 @@ function City:init(def)
         width = 16,
         height = 32,
         health = 10,
-        wealth = 0,
+        wealth = 10,
         sword = 'normal-sword'
         }
 
@@ -179,6 +179,7 @@ function City:update(dt)
                                 if self.player.wealth >= 10 then
                                     gStateStack:push(DialogueState('You bought a mask!', function()
                                         self.player.health = self.player.health + 1
+                                        self.player.maxHealth = self.player.maxHealth + 1
                                         self.player.wealth = self.player.wealth - 10
                                     end))
                                 else

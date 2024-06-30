@@ -26,9 +26,11 @@ function Entity:init(def)
         self.walkSpeed = PLAYER_WALK_SPEED
     end
 
-    self.health = def.health
+    self.maxHealth = def.health
 
-    self.wealth = def.wealth or nil
+    self.health = self.maxHealth
+
+    self.wealth = def.wealth or 0
 
     self.type = def.type or nil
 

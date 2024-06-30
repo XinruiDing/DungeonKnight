@@ -152,7 +152,7 @@ function Room:update(dt)
             if self.player.sword.isActive then
                 if entity:collides(self.player.sword) and not entity.hitBySword then
                     entity:damage(self.player.sword.hurt)
-                    self.player.wealth = self.player.wealth + 5
+                    self.player.wealth = self.player.wealth + 2
                     entity.hitBySword = true
                 end
             else
@@ -221,5 +221,7 @@ function Room:render()
         love.graphics.draw(gTextures['gui'], gFrames['gui'][86],
         TILE_SIZE * i, 0)
     end
+
+    love.graphics.printf("Wealth: " .. self.player.wealth, 0, 10, VIRTUAL_WIDTH, 'right')
 
 end

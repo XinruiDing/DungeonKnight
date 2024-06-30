@@ -18,7 +18,7 @@ function PlayerStatsState:render()
     love.graphics.setFont(gFonts['medium'])
     love.graphics.printf('Player Stats', 0, 10, VIRTUAL_WIDTH, 'center')
     love.graphics.setFont(gFonts['small'])
-    love.graphics.printf('Health: ' .. self.player.health, 0, 40, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('MaxHealth: ' .. self.player.maxHealth, 0, 40, VIRTUAL_WIDTH, 'center')
     love.graphics.printf('Wealth: ' .. self.player.wealth, 0, 60, VIRTUAL_WIDTH, 'center')
     love.graphics.printf('Sword: ' .. self.player.weaponName, 0, 80, VIRTUAL_WIDTH, 'center')
 
