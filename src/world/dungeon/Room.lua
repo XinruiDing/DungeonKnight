@@ -142,19 +142,17 @@ function Room:update(dt)
         -- collision between the player and entities in the room
         if not entity.dead and self.player:collides(entity) and not self.player.invulnerable then
             self.player:damage(1)
-            self.player.wealth = self.player.wealth + 5
-            self.player:goInvulnerable(1.5)
-
---[[             if self.player.health == 0 then
-                gStateMachine:change('game-over')
+            if self.player.isDead then
+                return
             end
- ]]            
+            self.player:goInvulnerable(1.5)
         end
 
         if not entity.dead then
             if self.player.sword.isActive then
                 if entity:collides(self.player.sword) and not entity.hitBySword then
                     entity:damage(self.player.sword.hurt)
+                    self.player.wealth = self.player.wealth + 5
                     entity.hitBySword = true
                 end
             else

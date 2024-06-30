@@ -2,6 +2,7 @@ Player = Class{__includes = Entity}
 
 function Player:init(def)
     Entity.init(self, def)
+    self.isDead = false
 end
 
 function Player:collides(target)
@@ -15,4 +16,14 @@ function Player:swordUpgrade(weaponDef)
     -- Assuming you pass the entire definition of the new weapon
     local newSwordDef = GAME_OBJECT_DEFS[weaponDef]
     self.sword = Sword(newSwordDef, self.x + TILE_SIZE, self.y + TILE_SIZE, self)
+end
+
+
+function Player:onDeath()
+    gStateStack:push(DialogueState('You Lost! Press Enter to return to city!', 
+        function()
+            gStateStack:pop()
+            gStateStack:push(CityState(self))
+        end
+    ))
 end

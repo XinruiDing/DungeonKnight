@@ -34,6 +34,8 @@ function Entity:init(def)
 
     self.dead = false
 
+    self.isDead = false
+
     -- flags for flashing the entity when hit
     self.invulnerable = false
     self.invulnerableDuration = 0
@@ -46,10 +48,14 @@ function Entity:init(def)
         self.sword = Sword(GAME_OBJECT_DEFS[def.sword], self.x + TILE_SIZE, self.y + TILE_SIZE, self)
     end
 
-    self.weaponName = nil
+    self.weaponName = 'normal-sword'
+
 
     self.hitBySword = false
 
+end
+
+function Entity:onDeath()
 end
 
 function Entity:changeAnimation(name)
@@ -90,6 +96,11 @@ end
 
 function Entity:damage(dmg)
     self.health = self.health - dmg
+
+    if self.health <= 0 and not self.isDead then
+        self.isDead = true
+        self:onDeath()
+    end
 end
 
 function Entity:goInvulnerable(duration)

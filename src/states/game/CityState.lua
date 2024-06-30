@@ -1,7 +1,7 @@
 CityState = Class{__includes = BaseState}
 
-function CityState:init()
-    self.city = City()
+function CityState:init(def)
+    self.city = City(def)
 
     gSounds['intro-music']:setLooping(true)
     gSounds['intro-music']:play()

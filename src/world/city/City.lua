@@ -1,6 +1,6 @@
 City = Class{}
 
-function City:init()
+function City:init(def)
     self.width = MAP_WIDTH
     self.height = MAP_HEIGHT
 
@@ -16,7 +16,7 @@ function City:init()
     self.objects = {}
     self:generateObjects()
 
-    self.player = Player {
+    self.player = def or Player {
         animations = ENTITY_DEFS['player'].animations,
         x = 100 + MAP_RENDER_OFFSET_X,
         y = 100 + MAP_RENDER_OFFSET_Y,
@@ -25,15 +25,13 @@ function City:init()
         health = 10,
         wealth = 0,
         sword = 'normal-sword'
-    }
+        }
 
     self.player.stateMachine = StateMachine {
         ['walk'] = function() return PlayerWalkState(self.player, self) end,
         ['idle'] = function() return PlayerIdleState(self.player) end
     }
     self.player.stateMachine:change('idle')
-
-    self.player.weaponName = 'normal-sword'
 
 end
 
