@@ -40,6 +40,10 @@ function Entity:init(def)
     -- timer for turning transparency on and off, flashing
     self.flashTimer = 0
 
+    if def.sword then
+        self.sword = Sword(GAME_OBJECT_DEFS[def.sword], self.x + TILE_SIZE, self.y + TILE_SIZE, self)
+    end
+
 end
 
 function Entity:changeAnimation(name)
@@ -111,6 +115,11 @@ function Entity:update(dt)
 
     self.currentAnimation:update(dt)
     self.stateMachine:update(dt)
+
+    if self.sword then
+        self.sword:update(dt)
+    end
+
 end
 
 function Entity:render()

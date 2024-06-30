@@ -2,6 +2,7 @@ PlayerWalkState = Class{__includes = EntityWalkState}
 
 function PlayerWalkState:init(entity, level)
     EntityWalkState.init(self, entity, level)
+    self.entity.lastMove = {x = 0, y = 1}
 end
 
 function PlayerWalkState:update(dt)
@@ -26,13 +27,20 @@ function PlayerWalkState:update(dt)
         dx = (dx / len) * self.entity.walkSpeed * dt
         dy = (dy / len) * self.entity.walkSpeed * dt
     end
-
+    
+    self.entity.lastMove = {x = dx, y = dy}
     -- Apply movement
     self.entity.x = self.entity.x + dx
     self.entity.y = self.entity.y + dy
 
     -- perform base collision detection against walls
     EntityWalkState.update(self, dt)
+
+    if love.keyboard.wasPressed('space') and gStateStack:getCurrentState().__index == DungeonState then
+        self.entity.sword:throw()
+    end
+
+    
 
     -- if we bumped something when checking collision, check any object collisions
     if self.bumped then

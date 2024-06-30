@@ -31,3 +31,7 @@ function StateStack:pop()
     self.states[#self.states]:exit()
     table.remove(self.states)
 end
+
+function StateStack:getCurrentState()
+    return self.states[#self.states]
+end

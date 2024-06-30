@@ -36,6 +36,8 @@ require 'src/gui/Selection'
 require 'src/world/city/City'
 require 'src/world/game_objects'
 require 'src/world/GameObject'
+require 'src/world/Sword'
+
 require 'src/world/dungeon/Dungeon'
 require 'src/world/dungeon/Room'
 require 'src/world/dungeon/EliteRoom'

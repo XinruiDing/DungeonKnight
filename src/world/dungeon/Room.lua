@@ -129,6 +129,7 @@ end
 
 function Room:update(dt)
     self.player:update(dt)
+    self.player.sword:update(dt)
 
     for k, entity in pairs(self.entities) do
         if entity.health <= 0 then
@@ -147,6 +148,10 @@ function Room:update(dt)
                 gStateMachine:change('game-over')
             end
  ]]            
+        end
+
+        if not entity.dead and self.player.sword.isActive and entity:collides(self.player.sword) then
+            entity:damage(1)
         end
     end
 
@@ -190,7 +195,9 @@ function Room:render()
     end
 
     for k, entity in pairs(self.entities) do
-        entity:render()
+        if not entity.dead then
+            entity:render()
+        end
     end
 
     for k, object in pairs(self.objects) do
@@ -198,6 +205,10 @@ function Room:render()
     end
 
     self.player:render()
+
+    if self.player.sword.isActive then
+        self.player.sword:render()
+    end
 
     for i = 1, self.player.health do
         love.graphics.draw(gTextures['gui'], gFrames['gui'][86],

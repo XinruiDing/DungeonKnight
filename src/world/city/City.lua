@@ -23,6 +23,7 @@ function City:init()
         width = 16,
         height = 32,
         health = 10,
+        sword = 'normal-sword'
     }
 
     self.player.stateMachine = StateMachine {
