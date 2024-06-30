@@ -44,6 +44,7 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
 - [ ] design charms.
 - reuse of code in courses:
     - `Animation`, `Textbox`, `Selection`, `Menu`, `Panel`, `entity`, `entityWalkState` in Pokemon.
+    - `gameObject` in Zelda
     - `drawnums.py` script
 
 ### ✨ Used resources

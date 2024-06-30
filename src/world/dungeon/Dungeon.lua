@@ -1,6 +1,6 @@
-City = Class{}
+Dungeon = Class{}
 
-function City:init()
+function Dungeon:init()
     self.width = MAP_WIDTH
     self.height = MAP_HEIGHT
 
@@ -33,7 +33,7 @@ function City:init()
 
 end
 
-function City:generateWallsAndFloors()
+function Dungeon:generateWallsAndFloors()
     for y = 1, self.height do
         table.insert(self.tiles, {})
 
@@ -80,7 +80,7 @@ function City:generateWallsAndFloors()
     end
 end
 
-function City:generateEntities()
+function Dungeon:generateEntities()
     local types = {'charm-merchant', 'mask-merchant', 'weapon-merchant'}
 
     for i = 1, #types do
@@ -108,14 +108,12 @@ function City:generateEntities()
     end
 end
 
-function City:generateObjects()
+function Dungeon:generateObjects()
     local entrance = GameObject(
         GAME_OBJECT_DEFS['entrance'],
         VIRTUAL_WIDTH / 2 - TILE_SIZE + MAP_RENDER_OFFSET_X, MAP_RENDER_OFFSET_Y)
 
     entrance.onCollide = function()
-        gStateStack:pop()
-        gStateStack:push(DungeonState())
     end
 
     table.insert(self.objects, entrance)
@@ -123,7 +121,7 @@ function City:generateObjects()
 end
 
 
-function City:update(dt)
+function Dungeon:update(dt)
     self.player:update(dt)
 
     for k, entity in pairs(self.entities) do
@@ -153,15 +151,9 @@ function City:update(dt)
             ))
         end
     end
-
-    for k, object in pairs(self.objects) do
-        if self.player:collides(object) then
-            object.onCollide()
-        end
-    end
 end
 
-function City:render()
+function Dungeon:render()
     for y = 1, self.height do
         for x = 1, self.width do
             local tile = self.tiles[y][x]
