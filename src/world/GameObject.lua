@@ -33,6 +33,8 @@ function GameObject:init(def, x, y)
 
     self.speed = def.speed or 0
 
+    self.hurt = def.hurt or 1
+
     -- default empty collision callback
     self.onCollide = function() end
     -- default empty consume callback

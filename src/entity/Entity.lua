@@ -48,6 +48,8 @@ function Entity:init(def)
 
     self.weaponName = nil
 
+    self.hitBySword = false
+
 end
 
 function Entity:changeAnimation(name)

@@ -75,7 +75,7 @@ ENTITY_DEFS = {
             },
         },
         walkSpeed = 20,
-        health = 1
+        health = 2
     },
     ['shoot-circle-enemy'] = {
         animations = {
@@ -91,7 +91,7 @@ ENTITY_DEFS = {
             },
         },
         walkSpeed = 20,
-        health = 1
+        health = 2
     },
     ['berserk-enemy'] = {
         animations = {
@@ -110,7 +110,7 @@ ENTITY_DEFS = {
             ['walk'] = 20,
             ['berserk'] = 50,
         },
-        health = 1
+        health = 5
     },
     ['elite-enemy'] = {
         animations = {
@@ -124,7 +124,9 @@ ENTITY_DEFS = {
                 interval = 0.15,
                 texture = 'elite-monster'
             },
-        }
+        },
+        walkSpeed = 50,
+        health = 20
     },
 
 }

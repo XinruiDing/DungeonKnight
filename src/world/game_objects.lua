@@ -49,7 +49,8 @@ GAME_OBJECT_DEFS = {
                 frame = 2
             }
         },
-        speed = 20
+        speed = 20,
+        hurt = 1
     },
     ['silver-sword'] ={
         type = 'weapon',
@@ -67,7 +68,8 @@ GAME_OBJECT_DEFS = {
                 frame = 1
             }
         },
-        speed = 40
+        speed = 40,
+        hurt = 2
     },
     ['gold-sword'] ={
         type = 'weapon',
@@ -85,7 +87,8 @@ GAME_OBJECT_DEFS = {
                 frame = 3
             }
         },
-        speed = 60
+        speed = 60,
+        hurt = 3
     },
 
 }

@@ -151,8 +151,16 @@ function Room:update(dt)
  ]]            
         end
 
-        if not entity.dead and self.player.sword.isActive and entity:collides(self.player.sword) then
-            entity:damage(1)
+        if not entity.dead then
+            if self.player.sword.isActive then
+                if entity:collides(self.player.sword) and not entity.hitBySword then
+                    entity:damage(self.player.sword.hurt)
+                    entity.hitBySword = true
+                end
+            else
+                entity.hitBySword = false
+            end
+            
         end
     end
 
