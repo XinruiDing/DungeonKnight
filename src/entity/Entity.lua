@@ -20,9 +20,16 @@ function Entity:init(def)
 
     self.y = def.y
 
-    self.walkSpeed = PLAYER_WALK_SPEED
+    if def.walkSpeed then
+        self.walkSpeed = self:decideWalkSpeed(def.walkSpeed) or PLAYER_WALK_SPEED
+    else 
+        self.walkSpeed = PLAYER_WALK_SPEED
+    end
 
     self.health = def.health
+
+    self.type = def.type or nil
+
 end
 
 function Entity:changeAnimation(name)
@@ -43,6 +50,14 @@ function Entity:createAnimations(animations)
     return animationsReturned
 end
 
+function Entity:decideWalkSpeed(state)
+    local speedReturned = 10  -- Default speed
+    if self.walkSpeed and self.walkSpeed[state] then
+        speedReturned = self.walkSpeed[state]
+    end
+    return speedReturned
+end
+
 
 function Entity:changeState(name)
     self.stateMachine:change(name)
@@ -58,7 +73,7 @@ function Entity:damage(dmg)
 end
 
 function Entity:onInteract()
-
+    return self.interactFlag
 end
 
 function Entity:processAI(params, dt)

@@ -5,7 +5,7 @@ GAME_OBJECT_DEFS = {
         frame = 42,
         width = 16,
         height = 16,
-        solid = false,
+        solid = true,
         defaultState = 'unpressed',
         states = {
             ['unpressed'] = {
@@ -16,4 +16,22 @@ GAME_OBJECT_DEFS = {
             }
         }
     },
+    ['door'] = {
+        type = 'door',
+        texture = 'door',
+        frame = 42,
+        width = 16,
+        height = 16,
+        solid = true,
+        defaultState = 'unpressed',
+        states = {
+            ['unpressed'] = {
+                frame = 42
+            },
+            ['pressed'] = {
+                frame = 42
+            }
+        }
+    },
+
 }

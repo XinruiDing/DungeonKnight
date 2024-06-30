@@ -1,33 +1,28 @@
 SelectState = Class{__includes = BaseState}
 
-function SelectState:init(texts, level)
+function SelectState:init(options, level, callback)
     self.level = level
-    self.texts = texts
+    self.options = options
+    self.callback = callback or function() end
+
+    local menuItems = {}
+    for i, optionText in ipairs(self.options) do
+        table.insert(menuItems, {
+            text = optionText,
+            onSelect = function()
+                gStateStack:pop()  -- Pop the menu
+                self.callback(optionText)
+            end
+        })
+    end
 
     self.menu = Menu {
         x = VIRTUAL_WIDTH / 2 - 64,
         y = VIRTUAL_HEIGHT / 2 - 32,
         width = 128,
         height = 64,
-        items = {
-            {
-                text = self.texts[1],
-                onSelect = function()
-                    gStateStack:pop()  -- Pop the menu
-                end
-            },
-            {
-                text = self.texts[2],
-                onSelect = function()
-                    gStateStack:pop()  -- Pop the menu
-                    gStateStack:push(DialogueState('You bought a mask!', function()
-                        self.level.player.health = self.level.player.health + 1
-                    end))
-                end
-            }
-        }
+        items = menuItems
     }
-
 end
 
 function SelectState:update(dt)

@@ -6,7 +6,7 @@ from PIL import ImageFont
 from PIL import ImageDraw
 
 # size of tile sheet on Y and X axis in tiles; replace these with something positive
-TILES_HIGH = 6
+TILES_HIGH = 16
 TILES_WIDE = 8
 
 TILE_SIZE = 16
@@ -14,7 +14,7 @@ TILE_SIZE = 16
 if __name__ == '__main__':
 
     # replace 'tiles.png' with your sprite sheet
-    img = Image.open('graphics/Objects/Door0.png')
+    img = Image.open('graphics/small_monster.png')
     draw = ImageDraw.Draw(img)
 
     # custom small font, good for small tile sets
@@ -25,10 +25,10 @@ if __name__ == '__main__':
 
     for y in range(TILES_HIGH):
         for x in range(TILES_WIDE):
-            draw.text((x * TILE_SIZE + 1, y * TILE_SIZE), str(counter), (0, 0, 0), font=font)
-            draw.text((x * TILE_SIZE, y * TILE_SIZE + 1), str(counter), (0, 0, 0), font=font)
-            draw.text((x * TILE_SIZE, y * TILE_SIZE), str(counter), (255, 0, 255), font=font)
+            draw.text((x * TILE_SIZE + 1, y * TILE_SIZE * 1.5), str(counter), (0, 0, 0), font=font)
+            draw.text((x * TILE_SIZE, y * TILE_SIZE * 1.5 + 1), str(counter), (0, 0, 0), font=font)
+            draw.text((x * TILE_SIZE, y * TILE_SIZE * 1.5), str(counter), (255, 0, 255), font=font)
             counter += 1
     
     # save as renamed tile sheet
-    img.save('door_numbered.png')
+    img.save('small_monster_numbered.png')

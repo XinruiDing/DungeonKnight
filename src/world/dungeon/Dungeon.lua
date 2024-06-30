@@ -1,176 +1,44 @@
 Dungeon = Class{}
 
-function Dungeon:init()
-    self.width = MAP_WIDTH
-    self.height = MAP_HEIGHT
-
-    self.renderOffsetX = MAP_RENDER_OFFSET_X
-    self.renderOffsetY = MAP_RENDER_OFFSET_Y
-
-    self.tiles = {}
-    self:generateWallsAndFloors()
-
-    self.entities = {}
-    self:generateEntities()
-
-    self.objects = {}
-    self:generateObjects()
-
-    self.player = Player {
-        animations = ENTITY_DEFS['player'].animations,
-        x = 100 + MAP_RENDER_OFFSET_X,
-        y = 100 + MAP_RENDER_OFFSET_Y,
-        width = 16,
-        height = 32,
-        health = 10,
-    }
-
-    self.player.stateMachine = StateMachine {
-        ['walk'] = function() return PlayerWalkState(self.player, self) end,
-        ['idle'] = function() return PlayerIdleState(self.player) end
-    }
-    self.player.stateMachine:change('idle')
-
+function Dungeon:init(player)
+    self.player = player
+    self.rooms = {}
+    self.currentRoomIndex = 1
+    self:createRoom(self.currentRoomIndex)
 end
 
-function Dungeon:generateWallsAndFloors()
-    for y = 1, self.height do
-        table.insert(self.tiles, {})
+function Dungeon:createRoom(index)
+    local room = Room(self.player)
 
-        for x = 1, self.width do
-            local id = TILE_EMPTY
-            local frame = nil
-
-            if x == 1 and y == 1 then
-                id = TILE_TOP_LEFT_CORNER
-                frame = 'low-wall'
-            elseif x == 1 and y == self.height then
-                id = TILE_BOTTOM_LEFT_CORNER
-                frame = 'low-wall'
-            elseif x == self.width and y == 1 then
-                id = TILE_TOP_RIGHT_CORNER
-                frame = 'low-wall'
-            elseif x == self.width and y == self.height then
-                id = TILE_BOTTOM_RIGHT_CORNER
-                frame = 'low-wall'
-            
-            -- random left-hand walls, right walls, top, bottom, and floors
-            elseif x == 1 then
-                id = TILE_LEFT_WALLS
-                frame = 'low-wall'
-            elseif x == self.width then
-                id = TILE_RIGHT_WALLS
-                frame = 'low-wall'
-            elseif y == 1 then
-                id = TILE_TOP_WALLS
-                frame = 'low-wall'
-            elseif y == self.height then
-                id = TILE_BOTTOM_WALLS
-                frame = 'low-wall'
-            else
-                id = SAFE_FLOORS[math.random(#SAFE_FLOORS)]
-                frame = 'floor'
-            end
-            
-            table.insert(self.tiles[y], {
-                id = id,
-                frame = frame
-            })
-        end
-    end
+    self.rooms[index] = room
 end
-
-function Dungeon:generateEntities()
-    local types = {'charm-merchant', 'mask-merchant', 'weapon-merchant'}
-
-    for i = 1, #types do
-
-        local type = types[i]
-
-        table.insert(self.entities, Entity {
-            animations = ENTITY_DEFS[type].animations,
-
-            -- ensure X and Y are within bounds of the map
-            x = MAP_RENDER_OFFSET_X + 20,
-            y = MAP_RENDER_OFFSET_Y + 30 * (i - 1),
-            
-            width = 16,
-            height = 32,
-
-            health = 999
-        })
-
-        self.entities[i].stateMachine = StateMachine {
-            ['idle'] = function() return EntityIdleState(self.entities[i]) end
-        }
-
-        self.entities[i]:changeState('idle')
-    end
-end
-
-function Dungeon:generateObjects()
-    local entrance = GameObject(
-        GAME_OBJECT_DEFS['entrance'],
-        VIRTUAL_WIDTH / 2 - TILE_SIZE + MAP_RENDER_OFFSET_X, MAP_RENDER_OFFSET_Y)
-
-    entrance.onCollide = function()
-    end
-
-    table.insert(self.objects, entrance)
-
-end
-
 
 function Dungeon:update(dt)
-    self.player:update(dt)
+    local currentRoom = self.rooms[self.currentRoomIndex]
+    currentRoom:update(dt)
 
-    for k, entity in pairs(self.entities) do
-        entity:update(dt)
-
-        if self.player:collides(entity) then
-            if self.player.direction == 'left' then
-                self.player.x = self.player.x + PLAYER_WALK_SPEED * dt
-                self.player:changeState('idle')
-            elseif self.player.direction == 'right' then
-                self.player.x = self.player.x - PLAYER_WALK_SPEED * dt
-                self.player:changeState('idle')
-            elseif self.player.direction == 'up' then
-                self.player.y = self.player.y + PLAYER_WALK_SPEED * dt
-                self.player:changeState('idle')
-            else
-                self.player.y = self.player.y - PLAYER_WALK_SPEED * dt
-                self.player:changeState('idle')
+    -- Check if the player interacts with the door to move to the next room
+    if self.player.interactFlag then
+        self.player.interactFlag = false
+        gStateStack:push(DialogueState('Do you want to go to the next room?',
+            function()
+                gStateStack:push(SelectState(
+                    {'cancel', 'confirm'}, self,
+                    function(selectedOption)
+                        if selectedOption == 'confirm' then
+                            self.currentRoomIndex = self.currentRoomIndex + 1
+                            if not self.rooms[self.currentRoomIndex] then
+                                self:createRoom(self.currentRoomIndex) -- Create the next room only when needed
+                            end
+                        end
+                    end
+                ))
             end
-
-            gStateStack:push(DialogueState('Buy Something?',
-                function ()
-                    gStateStack:push(SelectState(
-                        {'cancel', 'buy a musk'}, self
-                    ))
-                end
-            ))
-        end
+        ))
     end
 end
 
 function Dungeon:render()
-    for y = 1, self.height do
-        for x = 1, self.width do
-            local tile = self.tiles[y][x]
-            love.graphics.draw(gTextures[tile.frame], gFrames[tile.frame][tile.id],
-                (x - 1) * TILE_SIZE + self.renderOffsetX, 
-                (y - 1) * TILE_SIZE + self.renderOffsetY)
-        end
-    end
-
-    for k, entity in pairs(self.entities) do
-        entity:render()
-    end
-
-    for k, object in pairs(self.objects) do
-        object:render()
-    end
-
-    self.player:render()
-
+    local currentRoom = self.rooms[self.currentRoomIndex]
+    currentRoom:render()
 end

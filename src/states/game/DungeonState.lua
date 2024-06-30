@@ -1,7 +1,8 @@
 DungeonState = Class{__includes = BaseState}
 
-function DungeonState:init()
-    self.dungeon = Dungeon()
+function DungeonState:init(player)
+    self.player = player
+    self.dungeon = Dungeon(self.player)
 
     gSounds['intro-music']:setLooping(true)
     gSounds['intro-music']:play()
