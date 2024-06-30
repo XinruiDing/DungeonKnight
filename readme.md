@@ -27,9 +27,13 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
     - [x] gems
     - [x] void heart(octagonal gem)
     - [x] merchants and sages
+- [x] background picture: Zelda
 - [ ] use bfxr to design voice sourse.
 - [x] find free background music
-- [ ] write `dependences.lua`
+- [x] add fonts
+    - [x] add to dependences.
+- [x] write `dependences.lua`
+    - [ ] **REMEMBER** to add all file to dependences!
 - [ ] build the main map.
 - [ ] build dungeon.
 - [ ] build character upgrading mechanics.
@@ -38,9 +42,18 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
 - [ ] design three elite monster.
 - [ ] design hollow knight.
 - [ ] design charms.
+- reuse of code in courses:
+    - `Animation`, `Textbox`, `Selection`, `Menu`, `Panel`, `entity`, `entityWalkState` in Pokemon.
+    - `drawnums.py` script
 
 ### ✨ Used resources
 #### ✨ graphics
+- DawnLike - 16x16 Universal Rogue-like tileset v1.81
+    - author: DragonDePlatino
+    - origin: [opengameart](https://opengameart.org/content/dawnlike-16x16-universal-rogue-like-tileset-v181)
+    - lisence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+
 - dungeontileset-ii
     - author: 0x72
     - origin: [itch.io](https://0x72.itch.io/dungeontileset-ii)
@@ -63,6 +76,8 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
     - author: Kyrise
     - origin: [itch.io](https://kyrise.itch.io/kyrises-free-16x16-rpg-icon-pack)
     - lisence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+- Background: cs50game - Zelda's `background.png`
 
 #### ✨ sounds
 - 16-Bit Starter Pack
@@ -88,4 +103,7 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
 
         Each license and purchase is applicable to one company or one person only. It is forbidden to re-sell any of these works (e.g. as part of a soundtrack or in any other form). 
         It is forbidden to create or sell any derivative works.
+
+#### ✨ fonts
+- just use cs50game - Zelda's font.
 
