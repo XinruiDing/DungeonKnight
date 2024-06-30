@@ -172,9 +172,14 @@ function City:update(dt)
                         entityDef.interactions, self, 
                         function(selectedOption)
                             if selectedOption == 'Buy mask' then
-                                gStateStack:push(DialogueState('You bought a mask!', function()
-                                    self.player.health = self.player.health + 1
-                                end))
+                                if self.player.wealth >= 10 then
+                                    gStateStack:push(DialogueState('You bought a mask!', function()
+                                        self.player.health = self.player.health + 1
+                                        self.player.wealth = self.player.wealth - 10
+                                    end))
+                                else
+                                    gStateStack:push(DialogueState('You do not have enough money!'))
+                                end
                             elseif selectedOption == 'Buy weapon' then
                                 gStateStack:push(SelectState({'silver-sword', 'gold-sword'}, self, 
                                     function(selectedWeapon)
@@ -193,9 +198,7 @@ function City:update(dt)
                                         end
                                     end))
                             elseif selectedOption == 'Buy charm' then
-                                gStateStack:push(DialogueState('You bought a mask!', function()
-                                    self.player.health = self.player.health + 1
-                                end))
+                                gStateStack:push(DialogueState('Comming soon...'))
                             end
                         end
                     ))
