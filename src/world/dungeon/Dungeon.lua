@@ -13,6 +13,12 @@ function Dungeon:createRoom(index)
     self.rooms[index] = room
 end
 
+function Dungeon:createEliteRoom(index)
+    local room = EliteRoom(self.player)
+
+    self.rooms[index] = room
+end
+
 function Dungeon:update(dt)
     local currentRoom = self.rooms[self.currentRoomIndex]
     currentRoom:update(dt)
@@ -26,9 +32,16 @@ function Dungeon:update(dt)
                     {'cancel', 'confirm'}, self,
                     function(selectedOption)
                         if selectedOption == 'confirm' then
-                            self.currentRoomIndex = self.currentRoomIndex + 1
-                            if not self.rooms[self.currentRoomIndex] then
-                                self:createRoom(self.currentRoomIndex) -- Create the next room only when needed
+                            if self.currentRoomIndex < 3 then
+                                self.currentRoomIndex = self.currentRoomIndex + 1
+                                if not self.rooms[self.currentRoomIndex] then
+                                    self:createRoom(self.currentRoomIndex) -- Create the next room only when needed
+                                end
+                            else
+                                self.currentRoomIndex = self.currentRoomIndex + 1
+                                if not self.rooms[self.currentRoomIndex] then
+                                    self:createEliteRoom(self.currentRoomIndex) -- Create the next room only when needed
+                                end
                             end
                         end
                     end

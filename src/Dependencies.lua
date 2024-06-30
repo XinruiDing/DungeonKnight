@@ -38,6 +38,7 @@ require 'src/world/game_objects'
 require 'src/world/GameObject'
 require 'src/world/dungeon/Dungeon'
 require 'src/world/dungeon/Room'
+require 'src/world/dungeon/EliteRoom'
 
 
 
@@ -48,7 +49,9 @@ gTextures = {
     ['low-wall'] = love.graphics.newImage('graphics/Objects/Wall.png'),
     ['gui'] = love.graphics.newImage('graphics/GUI/GUI0.png'),
     ['door'] = love.graphics.newImage('graphics/Objects/Door0.png'),
-    ['small-monster'] = love.graphics.newImage('graphics/small_monster.png')
+    ['small-monster'] = love.graphics.newImage('graphics/small_monster.png'),
+    ['elite-monster'] = love.graphics.newImage('graphics/elite_monster.png'),
+    ['weapon'] = love.graphics.newImage('graphics/Items/MedWep.png'),
 }
 
 gFrames = {
@@ -58,6 +61,8 @@ gFrames = {
     ['gui'] = GenerateQuads(gTextures['gui'], 16, 16),
     ['door'] = GenerateQuads(gTextures['door'], 16, 16),
     ['small-monster'] = GenerateQuads(gTextures['small-monster'], 16, 24),
+    ['elite-monster'] = GenerateQuads(gTextures['elite-monster'], 32, 48),
+    ['weapon'] = GenerateQuads(gTextures['weapon'], 16, 16),
 }
 
 gFonts = {

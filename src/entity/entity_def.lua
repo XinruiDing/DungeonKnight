@@ -112,17 +112,17 @@ ENTITY_DEFS = {
         },
         health = 1
     },
-    ['enemy'] = {
+    ['elite-enemy'] = {
         animations = {
             ['walk'] = {
-                frames = {265, 266, 267, 268, 269, 270, 271, 272, 273},
+                frames = {1, 2, 3, 4, 5, 6, 7, 8},
                 interval = 0.15,
-                texture = 'small-monster'
+                texture = 'elite-monster'
             },
             ['idle'] = {
-                frames = {137, 138, 139, 140, 141},
+                frames = {1, 2, 3, 4},
                 interval = 0.15,
-                texture = 'small-monster'
+                texture = 'elite-monster'
             },
         }
     },

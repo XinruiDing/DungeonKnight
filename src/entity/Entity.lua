@@ -30,6 +30,16 @@ function Entity:init(def)
 
     self.type = def.type or nil
 
+    self.dead = false
+
+    -- flags for flashing the entity when hit
+    self.invulnerable = false
+    self.invulnerableDuration = 0
+    self.invulnerableTimer = 0
+    
+    -- timer for turning transparency on and off, flashing
+    self.flashTimer = 0
+
 end
 
 function Entity:changeAnimation(name)
@@ -72,6 +82,12 @@ function Entity:damage(dmg)
     self.health = self.health - dmg
 end
 
+function Entity:goInvulnerable(duration)
+    self.invulnerable = true
+    self.invulnerableDuration = duration
+end
+
+
 function Entity:onInteract()
     return self.interactFlag
 end
@@ -81,10 +97,30 @@ function Entity:processAI(params, dt)
 end
 
 function Entity:update(dt)
+    if self.invulnerable then
+        self.flashTimer = self.flashTimer + dt
+        self.invulnerableTimer = self.invulnerableTimer + dt
+
+        if self.invulnerableTimer > self.invulnerableDuration then
+            self.invulnerable = false
+            self.invulnerableTimer = 0
+            self.invulnerableDuration = 0
+            self.flashTimer = 0
+        end
+    end
+
     self.currentAnimation:update(dt)
     self.stateMachine:update(dt)
 end
 
 function Entity:render()
+    
+    -- draw sprite slightly transparent if invulnerable every 0.04 seconds
+    if self.invulnerable and self.flashTimer > 0.06 then
+        self.flashTimer = 0
+        love.graphics.setColor(1, 1, 1, 64/255)
+    end
+
     self.stateMachine:render()
+    love.graphics.setColor(1, 1, 1, 1)
 end

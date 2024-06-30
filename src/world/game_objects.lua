@@ -33,5 +33,56 @@ GAME_OBJECT_DEFS = {
             }
         }
     },
+    ['normal-sword'] ={
+        type = 'weapon',
+        texture = 'weapon',
+        frame = 2,
+        width = 16,
+        height = 16,
+        solid = true,
+        defaultState = 'unpressed',
+        states = {
+            ['unpressed'] = {
+                frame = 2
+            },
+            ['pressed'] = {
+                frame = 2
+            }
+        }
+    },
+    ['silver-sword'] ={
+        type = 'weapon',
+        texture = 'weapon',
+        frame = 1,
+        width = 16,
+        height = 16,
+        solid = true,
+        defaultState = 'unpressed',
+        states = {
+            ['unpressed'] = {
+                frame = 1
+            },
+            ['pressed'] = {
+                frame = 1
+            }
+        }
+    },
+    ['silver-sword'] ={
+        type = 'weapon',
+        texture = 'weapon',
+        frame = 3,
+        width = 16,
+        height = 16,
+        solid = true,
+        defaultState = 'unpressed',
+        states = {
+            ['unpressed'] = {
+                frame = 3
+            },
+            ['pressed'] = {
+                frame = 3
+            }
+        }
+    },
 
 }

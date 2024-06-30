@@ -131,8 +131,23 @@ function Room:update(dt)
     self.player:update(dt)
 
     for k, entity in pairs(self.entities) do
-        entity:processAI({room = self}, dt)
-        entity:update(dt)
+        if entity.health <= 0 then
+            entity.dead = true
+        elseif not entity.dead then
+            entity:processAI({room = self}, dt)
+            entity:update(dt)
+        end
+
+        -- collision between the player and entities in the room
+        if not entity.dead and self.player:collides(entity) and not self.player.invulnerable then
+            self.player:damage(1)
+            self.player:goInvulnerable(1.5)
+
+--[[             if self.player.health == 0 then
+                gStateMachine:change('game-over')
+            end
+ ]]            
+        end
     end
 
     for k, object in pairs(self.objects) do
@@ -183,5 +198,10 @@ function Room:render()
     end
 
     self.player:render()
+
+    for i = 1, self.player.health do
+        love.graphics.draw(gTextures['gui'], gFrames['gui'][86],
+        TILE_SIZE * i, 0)
+    end
 
 end

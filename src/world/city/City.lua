@@ -218,6 +218,7 @@ function City:update(dt)
 end
 
 function City:render()
+    
     for y = 1, self.height do
         for x = 1, self.width do
             local tile = self.tiles[y][x]
@@ -236,5 +237,11 @@ function City:render()
     end
 
     self.player:render()
+
+    for i = 1, self.player.health do
+        love.graphics.draw(gTextures['gui'], gFrames['gui'][86],
+        TILE_SIZE * i, 0)
+    end
+
 
 end
