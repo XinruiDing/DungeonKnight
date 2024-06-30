@@ -28,6 +28,8 @@ function Entity:init(def)
 
     self.health = def.health
 
+    self.wealth = def.wealth or nil
+
     self.type = def.type or nil
 
     self.dead = false

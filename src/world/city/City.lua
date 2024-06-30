@@ -23,6 +23,7 @@ function City:init()
         width = 16,
         height = 32,
         health = 10,
+        wealth = 0,
         sword = 'normal-sword'
     }
 
@@ -175,9 +176,22 @@ function City:update(dt)
                                     self.player.health = self.player.health + 1
                                 end))
                             elseif selectedOption == 'Buy weapon' then
-                                gStateStack:push(DialogueState('You bought a mask!', function()
-                                    self.player.health = self.player.health + 1
-                                end))
+                                gStateStack:push(SelectState({'silver-sword', 'gold-sword'}, self, 
+                                    function(selectedWeapon)
+                                        local cost = 0
+                                        if selectedWeapon == 'silver-sword' then cost = 50
+                                        elseif selectedWeapon == 'gold-sword' then cost = 100
+                                        end
+
+                                        if self.player.wealth >= cost then
+                                            gStateStack:push(DialogueState('You bought a weapon!', function()
+                                                self.player:swordUpgrade(selectedWeapon)
+                                                self.player.wealth = self.player.wealth - cost
+                                            end))
+                                        else
+                                            gStateStack:push(DialogueState('You do not have enough money!'))
+                                        end
+                                    end))
                             elseif selectedOption == 'Buy charm' then
                                 gStateStack:push(DialogueState('You bought a mask!', function()
                                     self.player.health = self.player.health + 1

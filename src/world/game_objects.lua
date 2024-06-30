@@ -66,9 +66,10 @@ GAME_OBJECT_DEFS = {
             ['pressed'] = {
                 frame = 1
             }
-        }
+        },
+        speed = 40
     },
-    ['silver-sword'] ={
+    ['gold-sword'] ={
         type = 'weapon',
         texture = 'weapon',
         frame = 3,
@@ -83,7 +84,8 @@ GAME_OBJECT_DEFS = {
             ['pressed'] = {
                 frame = 3
             }
-        }
+        },
+        speed = 60
     },
 
 }

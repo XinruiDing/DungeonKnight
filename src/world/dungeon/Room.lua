@@ -142,6 +142,7 @@ function Room:update(dt)
         -- collision between the player and entities in the room
         if not entity.dead and self.player:collides(entity) and not self.player.invulnerable then
             self.player:damage(1)
+            self.player.wealth = self.player.wealth + 5
             self.player:goInvulnerable(1.5)
 
 --[[             if self.player.health == 0 then
