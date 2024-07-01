@@ -37,6 +37,8 @@ function Entity:init(def)
 
     self.isDead = false
 
+    self.isWin = false
+
     -- flags for flashing the entity when hit
     self.invulnerable = false
     self.invulnerableDuration = 0
@@ -56,9 +58,6 @@ function Entity:init(def)
     
     self.gem = 0
 
-end
-
-function Entity:onDeath()
 end
 
 function Entity:changeAnimation(name)
@@ -99,11 +98,6 @@ end
 
 function Entity:damage(dmg)
     self.health = self.health - dmg
-
-    if self.health <= 0 and not self.isDead then
-        self.isDead = true
-        self:onDeath()
-    end
 end
 
 function Entity:goInvulnerable(duration)

@@ -142,6 +142,12 @@ function Room:update(dt)
         -- collision between the player and entities in the room
         if not entity.dead and self.player:collides(entity) and not self.player.invulnerable then
             self.player:damage(1)
+
+            if self.player.health <= 0 and not self.player.isDead then
+                self.player.isDead = true
+                self.player:onDeath()
+            end
+        
             if self.player.isDead then
                 return
             end
