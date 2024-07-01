@@ -24,6 +24,7 @@ function Player:onDeath()
         function()
             gStateStack:pop()
             self.health = self.maxHealth
+            self.isDead = false
             gStateStack:push(CityState(self))
         end
     ))

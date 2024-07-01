@@ -184,11 +184,26 @@ function Room:update(dt)
                     self.player.y = self.player.y + PLAYER_WALK_SPEED * dt + OVERLAP
                 end
             end
-            
+
             object.onCollide()
+
+            
+--[[             if self:areAllEnemiesDefeated() then
+                object.onCollide()
+            end
+ ]]            
         end
     end
 
+end
+
+function Room:areAllEnemiesDefeated()
+    for _, entity in pairs(self.entities) do
+        if not entity.dead then
+            return false
+        end
+    end
+    return true
 end
 
 function Room:render()
@@ -223,5 +238,7 @@ function Room:render()
     end
 
     love.graphics.printf("Wealth: " .. self.player.wealth, 0, 10, VIRTUAL_WIDTH, 'right')
+    love.graphics.printf("Health: " .. self.player.health, 0, 20, VIRTUAL_WIDTH, 'right')
+
 
 end

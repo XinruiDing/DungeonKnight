@@ -21,6 +21,9 @@ function PlayerStatsState:render()
     love.graphics.printf('MaxHealth: ' .. self.player.maxHealth, 0, 40, VIRTUAL_WIDTH, 'center')
     love.graphics.printf('Wealth: ' .. self.player.wealth, 0, 60, VIRTUAL_WIDTH, 'center')
     love.graphics.printf('Sword: ' .. self.player.weaponName, 0, 80, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('Gem: ' .. self.player.gem, 0, 100, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('Three Gem To Fight Final Boss', 0, 120, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('Health: ' .. self.player.health, 0, 140, VIRTUAL_WIDTH, 'center')
 
     love.graphics.printf('Press Q to close', 0, VIRTUAL_HEIGHT - 30, VIRTUAL_WIDTH, 'center')
 end

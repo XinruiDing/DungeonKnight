@@ -23,6 +23,7 @@ function City:init(def)
         width = 16,
         height = 32,
         health = 10,
+        maxHealth = 10,
         wealth = 10,
         sword = 'normal-sword'
         }

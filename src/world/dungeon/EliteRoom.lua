@@ -12,6 +12,27 @@ function EliteRoom:init(player)
     
 end
 
+function EliteRoom:update(dt)
+    Room.update(self, dt)
+
+    if self:areAllEnemiesDefeated() then
+        self:spawnGem()
+    end
+end
+
+function EliteRoom:spawnGem()
+    self.player.gem = self.player.gem + 1
+    gStateStack:push(DialogueState('You Win! You got a gem. Press Enter to return to city!', 
+    function()
+        self.player.health = self.maxHealth
+        self.player.isDead = false
+
+        gStateStack:pop()
+        gStateStack:push(CityState(self))
+    end
+    ))
+end
+
 function EliteRoom:generateBoss()
     local boss = Entity {
         animations = ENTITY_DEFS['elite-enemy'].animations, -- Ensure this definition exists

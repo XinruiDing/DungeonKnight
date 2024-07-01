@@ -26,9 +26,8 @@ function Entity:init(def)
         self.walkSpeed = PLAYER_WALK_SPEED
     end
 
-    self.maxHealth = def.health
-
-    self.health = self.maxHealth
+    self.maxHealth = def.maxHealth or def.health
+    self.health = def.health
 
     self.wealth = def.wealth or 0
 
@@ -54,6 +53,8 @@ function Entity:init(def)
 
 
     self.hitBySword = false
+    
+    self.gem = 0
 
 end
 
