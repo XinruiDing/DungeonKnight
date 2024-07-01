@@ -128,5 +128,21 @@ ENTITY_DEFS = {
         walkSpeed = 50,
         health = 20
     },
+    ['final-enemy'] = {
+        animations = {
+            ['walk'] = {
+                frames = {17, 18, 19, 20, 21, 22, 23, 24},
+                interval = 0.15,
+                texture = 'elite-monster'
+            },
+            ['idle'] = {
+                frames = {17, 18, 19, 20},
+                interval = 0.15,
+                texture = 'elite-monster'
+            },
+        },
+        walkSpeed = 50,
+        health = 30
+    },
 
 }

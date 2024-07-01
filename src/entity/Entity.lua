@@ -58,6 +58,8 @@ function Entity:init(def)
     
     self.gem = 0
 
+    self.final = false
+
 end
 
 function Entity:changeAnimation(name)

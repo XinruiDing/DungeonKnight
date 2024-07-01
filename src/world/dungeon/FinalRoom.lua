@@ -1,6 +1,6 @@
-EliteRoom = Class{__includes = Room}
+FinalRoom = Class{__includes = Room}
 
-function EliteRoom:init(player)
+function FinalRoom:init(player)
     Room.init(self, player) -- Call the base class constructor
 
     -- Custom setup for elite room
@@ -12,12 +12,12 @@ function EliteRoom:init(player)
     
 end
 
-function EliteRoom:update(dt)
+function FinalRoom:update(dt)
     Room.update(self, dt)
 
     if self:areAllEnemiesDefeated() then
         self.player.isWin = true
-        self.player:onWin()
+        self.player:onFinalWin()
     end
 
     if self.player.isWin then
@@ -27,9 +27,8 @@ function EliteRoom:update(dt)
 end
 
 
-function EliteRoom:generateBoss()
-    local def = ENTITY_DEFS['elite-enemy']
-
+function FinalRoom:generateBoss()
+    local def = ENTITY_DEFS['final-enemy']
     local boss = Entity {
         animations = def.animations, -- Ensure this definition exists
         walkSpeed = def.walkSpeed,

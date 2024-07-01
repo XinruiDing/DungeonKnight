@@ -31,13 +31,22 @@ function Player:onDeath()
 end
 
 function Player:onWin()
-    gStateStack:push(DialogueState('You Win! You got a gem. Press Enter to return to city!', 
+    gStateStack:push(DialogueState('You Win! Press Enter to restart the game!', 
         function()
             gStateStack:pop()
             self.gem = self.gem + 1
             self.health = self.maxHealth
             self.isWin = false
             gStateStack:push(CityState(self))
+        end
+    ))
+end
+
+function Player:onFinalWin()
+    gStateStack:push(DialogueState('You Win! You got a gem. Press Enter to return to city!', 
+        function()
+            gStateStack:pop()
+            gStateStack:push(StartState())
         end
     ))
 end

@@ -4,7 +4,11 @@ function Dungeon:init(player)
     self.player = player
     self.rooms = {}
     self.currentRoomIndex = 1
-    self:createRoom(self.currentRoomIndex)
+    if not self.player.final then
+        self:createRoom(self.currentRoomIndex)
+    else 
+        self:createFinalRoom(self.currentRoomIndex)
+    end
 end
 
 function Dungeon:createRoom(index)
@@ -18,6 +22,13 @@ function Dungeon:createEliteRoom(index)
 
     self.rooms[index] = room
 end
+
+function Dungeon:createFinalRoom(index)
+    local room = FinalRoom(self.player)
+
+    self.rooms[index] = room
+end
+
 
 function Dungeon:update(dt)
     local currentRoom = self.rooms[self.currentRoomIndex]

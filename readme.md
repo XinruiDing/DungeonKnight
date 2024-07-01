@@ -3,17 +3,28 @@
 ## **DUNGEON KNIGHT**
 
 ### ✨ Introduction
-Embark on an epic journey through the shadows in "Dungeon Knight," where classic roguelike mechanics meet the charming storytelling of Hollow Knight. Forge your path, upgrade your arsenal, and unravel the mysteries of the dungeon.
+Combining rouguelike and RPG gameplay, in contrast to the course content, the player can advance infinitely in all directions, weapons can be fired diagonally, and a weapon system is introduced whereby more powerful weapons and extra lives can be purchased through gold coins! As long as clear GUI!
 
 ### ✨ Design
 - The main map has three merchants — Charm Merchant, Mask Merchant (each mask represents an extra life), and a Weapons Upgrade Merchant (upgraded sword provides more damage) — alongside the dungeon entrance. 
-- Each dungeon randomly generates three to four rooms. 
-- In each dungeon journey, player will yield monster-dropped gold and occasionally uncovers hidden rooms that offer a random charm or an extra mask. 
-- Each run culminates in a battle against an elite monster, after which the player will have an opportunity to converse with a sage to claim a gem. 
+- Each dungeon randomly generates four rooms. 
+- In each dungeon journey, player will yield monster-dropped gold. 
+- Each run culminates in a battle against an elite monster, after which the player will get a gem. 
 - If player fail in battle, spoils will not get lost but can be spent on the main map. 
-- Each gem offers a choice called "a blessing and a curse," allowing player to smash a charm for a mask or a mask for gold. 
-- After collecting three gems, player can forge the Void Heart, which allows player to confront the Hollow Knight directly in the next dungeon.
-- Finally, player defeat the Hollow Knight to win the game, or face a reset and start a new adventure.
+- After collecting three gems, player can fight the final boss.
+- Finally, player defeat the last boss to win the game, or face a reset and start a new adventure.
+- scalability: The game keeps all major objects in data form and has highly abstract parent classes, providing a convenient interface for expanding functionality and more merchants and monsters
+
+### ✨ Function Showed in Video
+- talk with three different merchant
+- fight enemy, Movement is not restricted to up and down, left and right directions
+- different enemy has different health(s), Different monsters need to be attacked a different number of times before they die
+- Kill all the monsters before the door opens.
+- enter next room
+- win the elite monster and get a gem
+- Show GUI
+    - character's health, money, and weapon changed through the game and drades with merchant!
+- fight the final monster and restart the game.
 
 ### ✨ Tasks and Issues
 - [x] write a simple introduction to my game.
@@ -33,15 +44,14 @@ Embark on an epic journey through the shadows in "Dungeon Knight," where classic
 - [x] add fonts
     - [x] add to dependences.
 - [x] write `dependences.lua`
-    - [ ] **REMEMBER** to add all file to dependences!
-- [ ] build the main map.
-- [ ] build dungeon.
-- [ ] build character upgrading mechanics.
-- [ ] build state stack and state machine.
-- [ ] design normal monster.
-- [ ] design three elite monster.
-- [ ] design hollow knight.
-- [ ] design charms.
+    - [x] **REMEMBER** to add all file to dependences!
+- [x] build the main map.
+- [x] build dungeon.
+- [x] build character upgrading mechanics.
+- [x] build state stack and state machine.
+- [x] design normal monster.
+- [x] design three elite monster.
+- [x] design last monster.
 - reuse of code in courses:
     - `Animation`, `Textbox`, `Selection`, `Menu`, `Panel`, `entity`, `entityWalkState` in Pokemon.
     - `gameObject` in Zelda

@@ -22,6 +22,7 @@ require 'src/states/game/DungeonState'
 require 'src/states/game/DialogueState'
 require 'src/states/game/SelectState'
 require 'src/states/game/PlayerStatsState'
+require 'src/states/game/FinalState'
 
 require 'src/states/entity/EntityBaseState'
 require 'src/states/entity/EntityIdleState'
@@ -42,6 +43,7 @@ require 'src/world/Sword'
 require 'src/world/dungeon/Dungeon'
 require 'src/world/dungeon/Room'
 require 'src/world/dungeon/EliteRoom'
+require 'src/world/dungeon/FinalRoom'
 
 
 

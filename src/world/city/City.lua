@@ -124,11 +124,14 @@ function City:generateObjects()
                 gStateStack:push(SelectState({'cancel', 'Enter dungeon'}, self,
                     function(selectedOption)
                         if selectedOption == 'Enter dungeon' then
+                            if self.player.gem == 3 then
+                                self.player.final = true
+                            end
                             gStateStack:pop()
                             gStateStack:push(DungeonState(self.player))
                         end
                     end
-            ))
+                ))
             end))
     end
 
