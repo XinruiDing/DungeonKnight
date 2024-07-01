@@ -20,6 +20,7 @@ Combining rouguelike and RPG gameplay, in contrast to the course content, the pl
 - fight enemy, Movement is not restricted to up and down, left and right directions
 - different enemy has different health(s), Different monsters need to be attacked a different number of times before they die
 - Kill all the monsters before the door opens.
+- advanced monster's AI, will automatically chase the player
 - enter next room
 - win the elite monster and get a gem
 - Show GUI

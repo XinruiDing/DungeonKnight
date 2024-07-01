@@ -190,14 +190,11 @@ function Room:update(dt)
                     self.player.y = self.player.y + PLAYER_WALK_SPEED * dt + OVERLAP
                 end
             end
-
-            object.onCollide()
-
             
---[[             if self:areAllEnemiesDefeated() then
+            if self:areAllEnemiesDefeated() then
                 object.onCollide()
             end
- ]]            
+           
         end
     end
 
