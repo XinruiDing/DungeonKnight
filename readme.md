@@ -5,6 +5,8 @@
 ### ✨ Introduction
 Combining rouguelike and RPG gameplay, in contrast to the course content, the player can advance infinitely in all directions, weapons can be fired diagonally, and a weapon system is introduced whereby more powerful weapons and extra lives can be purchased through gold coins! As long as clear GUI!
 
+[Demo video:](https://youtu.be/jg6ZI-0Km-0)
+
 ### ✨ Design
 - The main map has three merchants — Charm Merchant, Mask Merchant (each mask represents an extra life), and a Weapons Upgrade Merchant (upgraded sword provides more damage) — alongside the dungeon entrance. 
 - Each dungeon randomly generates four rooms. 
